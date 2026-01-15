@@ -1,0 +1,43 @@
+# Python - קבצים מורצים וזמניים
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# סביבה וירטואלית (חשוב מאוד לא להעלות אותה)
+venv/
+env/
+ENV/
+.env/
+
+# הגדרות סביבה ומשתנים רגישים (כמו סיסמאות או API Keys)
+.env
+.venv
+*.env
+
+# הגדרות של VS Code
+.vscode/
+.history/
+
+# קבצי מערכת הפעלה
+.DS_Store
+Thumbs.db
+
+# יומני ריצה (Logs)
+*.log
