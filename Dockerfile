@@ -16,7 +16,7 @@ WORKDIR /app
 COPY app/requirements.txt .
 
 # 4. התקנת התלויות
-RUN pip install --no-cache-dir -r requirements.txt
+RUN pip install --no-cache-dir -r app/requirements.txt
 
 # 5. העתקת קוד האפליקציה
 COPY app/ .
