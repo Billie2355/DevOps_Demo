@@ -29,26 +29,14 @@ jobs:
         run: docker build -t devops-demo .
 
       - name: Run Docker container
-        run: |
-          docker run -d -p 8000:8000 --name devops-demo-container devops-demo
+        run: docker run -d -p 8000:8000 --name devops-demo-container devops-demo
 
-      - name: Wait for app to start
-        run: |
-          for i in {1..10}; do
-            curl --fail http://localhost:8000/health && exit 0
-            echo "Waiting for app..."
-            sleep 2
-          done
-          echo "App did not start in time"
-          exit 1
-
-
-      - name: Health check
-        run: |
-          curl --fail http://localhost:8000/health
+      - name: Health check inside container
+        run: docker exec devops-demo-container curl --fail http://localhost:8000/health
 
       - name: Stop container
         if: always()
         run: docker stop devops-demo-container
+
 
 
