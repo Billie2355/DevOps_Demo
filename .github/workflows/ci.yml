@@ -33,7 +33,15 @@ jobs:
           docker run -d -p 8000:8000 --name devops-demo-container devops-demo
 
       - name: Wait for app to start
-        run: sleep 5
+        run: |
+          for i in {1..10}; do
+            curl --fail http://localhost:8000/health && exit 0
+            echo "Waiting for app..."
+            sleep 2
+          done
+          echo "App did not start in time"
+          exit 1
+
 
       - name: Health check
         run: |
