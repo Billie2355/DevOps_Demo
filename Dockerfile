@@ -13,10 +13,10 @@ ENV SSL_CERT_FILE=/etc/ca-bundle.crt
 WORKDIR /app
 
 # 3. העתקת קובץ התלויות
-COPY app/requirements.txt .
+COPY requirements.txt .
 
 # 4. התקנת התלויות
-RUN pip install --no-cache-dir -r app/requirements.txt
+RUN pip install --no-cache-dir -r requirements.txt
 
 # 5. העתקת קוד האפליקציה
 COPY app/ .
