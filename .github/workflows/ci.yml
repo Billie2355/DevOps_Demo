@@ -31,8 +31,19 @@ jobs:
       - name: Run Docker container
         run: docker run -d -p 8000:8000 --name devops-demo-container devops-demo
 
-      - name: Health check inside container
-        run: docker exec devops-demo-container curl --fail http://localhost:8000/health
+      - name: Health check inside container (Python)
+        run: |
+            docker exec devops-demo-container python -c "
+            import requests
+            resp = requests.get('http://localhost:8000/health')
+            assert resp.status_code == 200
+            print('Health check passed!')
+            "
+
+      - name: Stop container
+        if: always()
+        run: docker stop devops-demo-container
+
 
       - name: Stop container
         if: always()
