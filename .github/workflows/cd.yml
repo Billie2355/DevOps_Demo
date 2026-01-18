@@ -34,5 +34,5 @@ jobs:
         run: |
           az containerapp update \
             --name devops-demo-ca \
-            --resource-group devops-demo-ca-rg \
+            --resource-group DefaultResourceGroup-EUS \
             --image ${{ secrets.ACR_NAME }}.azurecr.io/devops-demo:latest
