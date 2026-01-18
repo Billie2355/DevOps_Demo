@@ -29,21 +29,16 @@ jobs:
         run: docker build -t devops-demo .
 
       - name: Run Docker container
-        run: docker run -d -p 8000:8000 --name devops-demo-container devops-demo
+        run: docker run -d -p 5000:5000 --name devops-demo-container devops-demo
 
-      - name: Health check inside container (Python)
+      - name: Health check inside container
         run: |
-            docker exec devops-demo-container python -c "
-            import requests
-            resp = requests.get('http://localhost:8000/health')
-            assert resp.status_code == 200
-            print('Health check passed!')
-            "
-
-      - name: Stop container
-        if: always()
-        run: docker stop devops-demo-container
-
+          docker exec devops-demo-container python -c "
+          import requests
+          resp = requests.get('http://localhost:5000/health')
+          assert resp.status_code == 200
+          print('Health check passed!')
+          "
 
       - name: Stop container
         if: always()
